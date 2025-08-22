@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ferrari Motors – Kecepatan & Desain Ikonik</title>
+  <meta name="description" content="Website perusahaan mobil Ferrari: model, spesifikasi, dealer, dan kontak." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --red:#d90429; /* Ferrari-esque red */
+      --dark:#0b0b0d;
+      --mid:#141419;
+      --light:#ffffff;
+      --accent:#f5c518; /* gold accent */
+      --muted:#9aa0a6;
+      --shadow:0 10px 30px rgba(44, 19, 19, 0.25);
+      --radius:20px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--dark),#101015 30%,#0b0b0d);color:var(--light);font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* NAVBAR */
+    .nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);background:rgba(10,10,12,.6);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav .wrap{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 18px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.5px}
+    .brand i{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:12px;background:radial-gradient(circle at 30% 30%,#ff3b3b,var(--red));box-shadow:0 6px 16px rgba(217,4,41,.4)}
+    .brand span{font-size:1.05rem}
+    .menu{display:flex;gap:18px;font-weight:600}
+    .menu a{opacity:.85}
+    .menu a:hover{opacity:1;color:var(--accent)}
+    .cta-btn{padding:10px 16px;border-radius:14px;background:linear-gradient(135deg,var(--red),#ff4444);box-shadow:var(--shadow);font-weight:700}
+    .cta-btn:hover{transform:translateY(-1px)}
+
+    /* HERO */
+    .hero{position:relative;isolation:isolate}
+    .hero .wrap{max-width:1200px;margin:auto;padding:80px 18px 40px;display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+    .hero h1{font-size:clamp(32px,5vw,58px);line-height:1.05;margin:0 0 12px;font-weight:800}
+    .hero p{color:#cfcfd6;margin:0 0 22px}
+    .hero .badges{display:flex;gap:12px;flex-wrap:wrap;margin:8px 0 28px}
+    .badge{border:1px solid rgba(255,255,255,.12);padding:8px 12px;border-radius:999px;font-size:.9rem;opacity:.95}
+    .hero-card{background:linear-gradient(180deg,#15151b,#0f0f14);border:1px solid rgba(255,255,255,.06);padding:18px;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero-illu{aspect-ratio:16/10;border-radius:16px;background:linear-gradient(120deg,#1a1a22,#0f0f12);position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
+    .glow{position:absolute;inset:-20%;background:radial-gradient(ellipse at 30% 50%,rgba(217,4,41,.45),transparent 60%),radial-gradient(ellipse at 90% 20%,rgba(245,197,24,.35),transparent 50%)}
+    .car-shape{position:absolute;inset:0;display:grid;place-items:center;opacity:.9;mix-blend:screen}
+    .car-shape svg{width:88%;max-width:720px}
+
+    /* MODELS */
+    section{padding:50px 18px}
+    .section-wrap{max-width:1200px;margin:auto}
+    .section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:18px}
+    .section-head h2{margin:0;font-size:clamp(22px,3vw,36px)}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+    .card{grid-column:span 4;background:linear-gradient(180deg,#15151b,#101017);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+    .card .thumb{aspect-ratio:16/9;background:linear-gradient(135deg,#222233,#13131a);position:relative}
+    .card .thumb::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(217,4,41,.35),transparent 60%)}
+    .card .body{padding:16px}
+    .spec{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0 0;color:#c6c7ce;font-size:.92rem}
+    .chip{border:1px solid rgba(255,255,255,.12);padding:6px 10px;border-radius:999px}
+
+    /* GALLERY */
+    .gallery{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+    .tile{aspect-ratio:1/1;border-radius:16px;border:1px solid rgba(255,255,255,.06);background:linear-gradient(140deg,#1a1a22,#0d0d10)}
+    .tile.t2{grid-column:span 2;aspect-ratio:2/1}
+    .tile.t3{grid-column:span 3;aspect-ratio:3/2}
+
+    /* DEALER */
+    .dealer{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+    .dealer .map{border-radius:var(--radius);border:1px solid rgba(255,255,255,.08);overflow:hidden}
+    .dealer .map iframe{width:100%;height:360px;border:0;filter:grayscale(.2) contrast(1.05)}
+    .dealer .form{background:linear-gradient(180deg,#15151b,#101017);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:18px}
+    label{display:block;margin:10px 0 6px}
+    input,select,textarea{width:100%;padding:12px 14px;background:#0e0e12;border:1px solid rgba(255,255,255,.12);color:var(--light);border-radius:12px}
+    button{cursor:pointer;border:0;padding:12px 16px;border-radius:14px;background:linear-gradient(135deg,var(--red),#ff3b3b);color:#fff;font-weight:700;box-shadow:var(--shadow)}
+
+    /* FOOTER */
+    footer{padding:30px 18px;border-top:1px solid rgba(255,255,255,.08);color:#c9c9cf;background:#0b0b0d}
+    footer .wrap{max-width:1200px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center}
+    .social{display:flex;gap:12px}
+    .social a{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:12px;border:1px solid rgba(255,255,255,.12)}
+
+    /* RESPONSIVE */
+    @media (max-width:940px){
+      .hero .wrap{grid-template-columns:1fr}
+      .dealer{grid-template-columns:1fr}
+      .card{grid-column:span 6}
+    }
+    @media (max-width:620px){
+      .menu{display:none}
+      .card{grid-column:span 12}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      .tile.t2,.tile.t3{grid-column:span 2;aspect-ratio:2/1}
+      .brand span{font-size:.98rem}
+    }
+
+    /* Tiny utility */
+    .muted{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="wrap">
+      <div class="brand" aria-label="Ferrari Motors brand">
+        <i>🏎️</i>
+        <span>Ferrari<span style="color:var(--accent)">Motors</span></span>
+      </div>
+      <div class="menu" role="navigation" aria-label="Menu utama">
+        <a href="#model">Model</a>
+        <a href="#galeri">Galeri</a>
+        <a href="#dealer">Dealer</a>
+        <a href="#kontak">Kontak</a>
+      </div>
+      <a class="cta-btn" href="#dealer">Pesan Test Drive</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Kecepatan, Presisi, dan Warisan Ikonik</h1>
+        <p>Ferrari adalah perpaduan seni dan teknik. Dari trek balap hingga jalan raya, setiap detail dirancang untuk menghadirkan adrenalin dan kemewahan.</p>
+        <div class="badges">
+          <div class="badge">V8 & V12 Engine</div>
+          <div class="badge">Aero Active</div>
+          <div class="badge">0–100 km/j ⩽ 3.0 s</div>
+          <div class="badge">RWD / AWD</div>
+        </div>
+        <a class="cta-btn" href="#model">Lihat Model</a>
+      </div>
+      <div class="hero-card">
+        <div class="hero-illu" aria-hidden="true">
+          <div class="glow"></div>
+          <div class="car-shape">
+            <!-- Simple stylized car outline (SVG) -->
+            <svg viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Ilustrasi siluet mobil">
+              <path d="M50 380 C 250 320, 420 260, 520 260 C 600 260, 740 310, 880 320 C 980 330, 1090 320, 1130 340" stroke="white" stroke-width="6" stroke-linecap="round" opacity=".75"/>
+              <circle cx="390" cy="400" r="62" stroke="white" stroke-width="8" opacity=".9"/>
+              <circle cx="930" cy="400" r="62" stroke="white" stroke-width="8" opacity=".9"/>
+              <path d="M250 335 Q 340 300, 430 300 L 700 300 Q 820 305, 900 330" stroke="white" stroke-width="6" opacity=".55"/>
+            </svg>
+          </div>
+        </div>
+        <p class="muted" style="margin:12px 2px 4px">*Gambar ilustrasi. Spesifikasi dapat berbeda untuk tiap model.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- MODELS -->
+  <section id="model">
+    <div class="section-wrap">
+      <div class="section-head">
+        <h2>Line-up Model</h2>
+        <p class="muted">Pilih performa sesuai karakter Anda.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="thumb" role="img" aria-label="Ferrari SF90 (placeholder)"></div>
+          <div class="body">
+            <h3>SF90 Stradale</h3>
+            <p>Hiper mobil plug-in hybrid dengan traksi maksimal dan akselerasi brutal.</p>
+            <div class="spec">
+              <span class="chip">PHEV</span>
+              <span class="chip">AWD</span>
+              <span class="chip">0–100: 2.5 s</span>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb" role="img" aria-label="Ferrari 296 GTB (placeholder)"></div>
+          <div class="body">
+            <h3>296 GTB</h3>
+            <p>V6 twin‑turbo hybrid yang lincah—perpaduan efisiensi dan sensasi.</p>
+            <div class="spec">
+              <span class="chip">V6 Hybrid</span>
+              <span class="chip">RWD</span>
+              <span class="chip">0–100: 2.9 s</span>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb" role="img" aria-label="Ferrari Roma (placeholder)"></div>
+          <div class="body">
+            <h3>Roma</h3>
+            <p>Grand tourer elegan—desain minimalis dengan performa menawan.</p>
+            <div class="spec">
+              <span class="chip">V8</span>
+              <span class="chip">RWD</span>
+              <span class="chip">0–100: 3.4 s</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="galeri">
+    <div class="section-wrap">
+      <div class="section-head">
+        <h2>Galeri Desain</h2>
+        <p class="muted">Aerodinamika yang memukau dalam tiap sudut.</p>
+      </div>
+      <div class="gallery" aria-label="Galeri gambar placeholder">
+        <div class="tile t2"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile t3"></div>
+        <div class="tile"></div>
+        <div class="tile t2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEALER & CONTACT -->
+  <section id="dealer">
+    <div class="section-wrap">
+      <div class="section-head">
+        <h2>Temukan Dealer & Test Drive</h2>
+        <p class="muted">Masukkan kota Anda untuk info ketersediaan.</p>
+      </div>
+      <div class="dealer">
+        <div class="map" aria-hidden="true">
+          <!-- Anda bisa mengganti src dengan peta kota Anda -->
+          <iframe title="Peta dealer (contoh)" src="https://www.openstreetmap.org/export/embed.html?bbox=106.77%2C-6.33%2C107.05%2C-6.05&amp;layer=mapnik"></iframe>
+        </div>
+        <form class="form" id="kontak">
+          <label for="nama">Nama Lengkap</label>
+          <input id="nama" name="nama" placeholder="Nama Anda" required />
+
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" placeholder="nama@email.com" required />
+
+          <label for="kota">Kota</label>
+          <select id="kota" name="kota" required>
+            <option value="">Pilih Kota</option>
+            <option>Jakarta</option>
+            <option>Bandung</option>
+            <option>Surabaya</option>
+            <option>Yogyakarta</option>
+            <option>Denpasar</option>
+          </select>
+
+          <label for="model-pilihan">Model Pilihan</label>
+          <select id="model-pilihan" name="model">
+            <option>SF90 Stradale</option>
+            <option>296 GTB</option>
+            <option>Roma</option>
+          </select>
+
+          <label for="pesan">Pesan</label>
+          <textarea id="pesan" name="pesan" rows="4" placeholder="Saya ingin jadwal test drive..."></textarea>
+
+          <div style="display:flex;gap:12px;align-items:center;margin-top:14px">
+            <button type="submit">Kirim Permintaan</button>
+            <small class="muted">Kami akan membalas melalui email Anda.</small>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p>© <span id="year"></span> Ferrari Motors. Semua hak dilindungi. *Ini adalah situs contoh untuk pembelajaran.</p>
+      <div class="social" aria-label="Tautan sosial">
+        <a href="#" title="Instagram" aria-label="Instagram">📸</a>
+        <a href="#" title="YouTube" aria-label="YouTube">▶️</a>
+        <a href="#" title="X/Twitter" aria-label="Twitter">𝕏</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // tahun dinamis
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // contoh submit tanpa backend
+    document.querySelector('form').addEventListener('submit', function(e){
+      e.preventDefault();
+      const nama = document.getElementById('nama').value.trim();
+      alert(`Terima kasih, ${nama || 'calon pengemudi'}! Permintaan test drive Anda telah dicatat.`);
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
